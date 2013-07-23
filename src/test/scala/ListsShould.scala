@@ -11,15 +11,12 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 		case h :: t => last(t)
 	}
 
-	def penultimate(given: List[Int]): Int = given match {
-		case h :: p :: Nil => h
-		case h :: p :: t => penultimate(given.tail)
-	}
-
 	def nth(index: Int, given: List[Int]): Int = index match {
 		case 0 => given.head
 		case _ => nth(index - 1, given.tail)
 	}
+
+	def penultimate(given: List[Int]): Int = nth(given.length - 2, given)
 
 	describe ("Finding elements of a list") {
 		it ("can find the last element"){
