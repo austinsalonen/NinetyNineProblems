@@ -16,7 +16,28 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 		case _ => nth(index - 1, given.tail)
 	}
 
+	def length(given: List[Int]): Int = {
+		// let's ignore the existance of .length
+		def _length(acc: Int, lst: List[Int]): Int = lst match {
+			case h :: t => _length(acc + 1, lst.tail)
+			case Nil => acc		
+		}
+
+		_length(0, given)
+	}
+
 	def penultimate(given: List[Int]): Int = nth(given.length - 2, given)
+
+	def reverse(given: List[Int]): List[Int] = {
+		// let's ignore the existance of .reverse
+		def _reverse(head: List[Int], tail: List[Int]): List[Int] = tail match {
+			case h :: t => _reverse(h +: head, tail.tail)
+			case Nil => head
+		}
+
+		_reverse(Nil, given)
+	}
+
 
 	describe ("Finding elements of a list") {
 		it ("can find the last element"){
@@ -45,6 +66,26 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should be 2")
 			n should be(2)
+		}
+	}
+
+	describe ("Finding the lenght of a list") {
+		it ("can find the length") {
+			when ("querying for the length") 
+			val len = length(numbers)
+
+			then ("it should be 6")
+			len should be(6)
+		}
+	}
+
+	describe ("Reversing a list") {
+		it ("can be reversed") {
+			when ("reversing a list")
+			var rev = reverse(numbers)
+
+			then ("it should be reversed") 
+			rev should be(List(8,5,3,2,1,1))
 		}
 	}
 }
