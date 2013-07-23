@@ -1,0 +1,4 @@
+NinetyNineProblems
+==================
+
+... in scala
