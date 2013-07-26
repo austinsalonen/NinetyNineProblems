@@ -84,7 +84,7 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(numbers)
 		}
 	}
-/*
+
 	describe ("P08: Eliminate consecutive duplicates of alist elements") {
 		it ("should be compressed") {
 			when ("given a set")
@@ -94,5 +94,4 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(List('a, 'b, 'c, 'a, 'd, 'e))
 		}
 	}
-*/
 }

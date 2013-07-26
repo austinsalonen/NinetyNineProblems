@@ -40,5 +40,13 @@ object Lists99 {
 		case n => List(n)
 	}
 
-	//def compress(given: List[Any]) : List[Any] = Nil
+	def compress(given: List[Any]) : List[Any] = {
+		def _compress(acc: List[Any], rest: List[Any], curr: Any): List[Any] = rest match {
+			case Nil => acc
+			case (h: Any) :: t if h == curr => _compress(acc, t, curr)
+			case h :: t => _compress(acc :+ h, t, h)
+		}
+
+		_compress(Nil :+ given.head, given.tail, given.head)
+	}
 }
