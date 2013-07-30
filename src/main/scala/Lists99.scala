@@ -49,12 +49,29 @@ object Lists99 {
 		_compress(Nil, given)
 	}
 
-	def pack(given: List[Any]) : List[Any] = {
+	def pack(given: List[Any]) : List[List[Any]] = {
 		def _pack(acc: List[List[Any]], rest: List[Any]) : List[List[Any]] = rest match {
 			case Nil => acc
 			case h :: t => _pack(acc :+ rest.takeWhile(_ == h), rest dropWhile (_ == h))
 		}
 
 		_pack(Nil, given)
+	}
+
+	def encode(given: List[Any]) : List[Any] = pack(given) map (lst => (lst.length, lst.head))
+
+	def encodeModified(given: List[Any]) : List[Any] = {
+		def _modified(itm: Any) : Any = itm match {
+			case (1, x) => x
+			case tup => tup
+		}
+
+		encode(given) map _modified
+	}
+
+	def decode(encoded: List[Tuple2[Int,Any]]) : List[Any] = {
+		def _expand(itm: Tuple2[Int,Any]) : List[Any] = List.fill(itm._1)(itm._2)
+		encoded flatMap _expand
+		//List.fill(3)('a)
 	}
 }

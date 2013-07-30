@@ -104,4 +104,34 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e)))
 		}
 	}
+
+	describe ("P10: Run-length encoding of a list.") {
+		it ("should RLE a list") {
+			when ("RL encoding the list") 
+			val rle = Lists99.encode(letters)
+
+			then ("it should be tuples")
+			rle should be(List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
+		}
+	}
+
+	describe ("P11: Modified run-length encoding.") {
+		it ("should RLE a list") {
+			when ("RL encoding the list") 
+			val rle = Lists99.encodeModified(letters)
+
+			then ("it should be tuples")
+			rle should be(List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))
+		}	
+	}
+
+	describe ("P12: Decode a run-length encoded list.") { 
+		it ("should decode a RLE'd list") {
+			when ("decoding the RLE'd list")
+			val dec = Lists99.decode(List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
+
+			then ("it should be the original list") 
+			dec should be(letters)
+		}
+	}
 }
