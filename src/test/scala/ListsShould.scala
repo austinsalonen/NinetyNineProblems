@@ -94,4 +94,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(List('a, 'b, 'c, 'a, 'd, 'e))
 		}
 	}
+
+	describe ("P09: Pack consecutive duplicates of list elements") {
+		it ("should create a list of lists") {
+			when ("given a set to pack") 
+			val f = Lists99.pack(letters)
+
+			then ("it should be a list of lists")
+			f should be(List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e)))
+		}
+	}
 }

@@ -41,12 +41,20 @@ object Lists99 {
 	}
 
 	def compress(given: List[Any]) : List[Any] = {
-		def _compress(acc: List[Any], rest: List[Any], curr: Any): List[Any] = rest match {
+		def _compress(acc: List[Any], rest: List[Any]): List[Any] = rest match {
 			case Nil => acc
-			case (h: Any) :: t if h == curr => _compress(acc, t, curr)
-			case h :: t => _compress(acc :+ h, t, h)
+			case h :: t => _compress(acc :+ h, t dropWhile (_ == h))
 		}
 
-		_compress(Nil :+ given.head, given.tail, given.head)
+		_compress(Nil, given)
+	}
+
+	def pack(given: List[Any]) : List[Any] = {
+		def _pack(acc: List[List[Any]], rest: List[Any]) : List[List[Any]] = rest match {
+			case Nil => acc
+			case h :: t => _pack(acc :+ rest.takeWhile(_ == h), rest dropWhile (_ == h))
+		}
+
+		_pack(Nil, given)
 	}
 }
