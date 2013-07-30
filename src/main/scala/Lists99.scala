@@ -72,6 +72,5 @@ object Lists99 {
 	def decode(encoded: List[Tuple2[Int,Any]]) : List[Any] = {
 		def _expand(itm: Tuple2[Int,Any]) : List[Any] = List.fill(itm._1)(itm._2)
 		encoded flatMap _expand
-		//List.fill(3)('a)
 	}
 }
