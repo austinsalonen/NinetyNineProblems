@@ -94,5 +94,7 @@ object Lists99 {
 		}
 	}
 
-	def duplicate(given: List[Any]) : List[Any] = given flatMap {itm => List(itm,itm)}
+	def duplicate(given: List[Any]) : List[Any] = duplicateN(2, given)
+
+	def duplicateN(qty: Int, given: List[Any]) : List[Any] = given flatMap {itm => List.fill(qty)(itm)}
 }
