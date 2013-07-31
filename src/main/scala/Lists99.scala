@@ -97,4 +97,8 @@ object Lists99 {
 	def duplicate(given: List[Any]) : List[Any] = duplicateN(2, given)
 
 	def duplicateN(qty: Int, given: List[Any]) : List[Any] = given flatMap {itm => List.fill(qty)(itm)}
+
+	def drop(every: Int, given: List[Any]) : List[Any] = {
+		given zip given.indices filterNot { case(a: Any, b: Int) => (b + 1) % every == 0} map {case(a: Any, b: Int) => a}
+	}
 }

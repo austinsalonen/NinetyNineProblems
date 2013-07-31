@@ -300,4 +300,22 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			dup should be(Nil)
 		}
 	}
+
+	describe ("P16: Drop every Nth element from a list.") {
+		it ("should drop every 3rd item of a given list") {
+			when ("dropping items in a list") 
+			val dup = Lists99.drop(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+
+			then ("it should be without itmes")
+			dup should be(List('a, 'b, 'd, 'e, 'g, 'h, 'j, 'k))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val dup = Lists99.drop(4, Nil)
+
+			then ("it should be Nil")
+			dup should be(Nil)
+		}
+	}
 }
