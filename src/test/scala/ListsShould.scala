@@ -60,6 +60,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(Nil)
 		}
 
+		it ("should handle a too large index") {
+			when ("given a large number") 
+			val f = Lists99.nth(100, numbers)
+
+			then ("it should be Nil")
+			f should be(Nil)
+		}
+
 		it ("should handle Nil") {
 			when ("given Nil") 
 			val f = Lists99.nth(0, Nil)
