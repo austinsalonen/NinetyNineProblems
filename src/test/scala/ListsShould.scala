@@ -15,6 +15,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be 8")
 			n should be(8)
 		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.last(Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
+		}
 	}
 
 	describe  ("P02: Finding the last but one element of a list") {
@@ -24,6 +32,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should be 5")
 			n should be(5)
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.penultimate(Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
 		}
 	}
 
@@ -35,6 +51,22 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be 2")
 			n should be(2)
 		}
+
+		it ("should handle a negative index") {
+			when ("given a negative number") 
+			val f = Lists99.nth(-1, numbers)
+
+			then ("it should be Nil")
+			f should be(Nil)
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.nth(0, Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
+		}
 	}
 
 	describe ("P04: Finding the lenght of a list") {
@@ -45,6 +77,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be 6")
 			len should be(6)
 		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.length(Nil)
+
+			then ("it should be Nil")
+			f should be(0)
+		}
 	}
 
 	describe ("P05: Reversing a list") {
@@ -54,6 +94,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should be reversed") 
 			rev should be(List(8,5,3,2,1,1))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.reverse(Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
 		}
 	}
 
@@ -73,6 +121,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be true") 
 			p should be(true)
 		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.isPalindrome(Nil)
+
+			then ("it should be Nil")
+			f should be(false)
+		}
 	}
 
 	describe ("P07: Flattening a nested list structure") {
@@ -82,6 +138,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should be flat")
 			f should be(numbers)
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.flatten(Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
 		}
 	}
 
@@ -93,6 +157,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be compressed")
 			f should be(List('a, 'b, 'c, 'a, 'd, 'e))
 		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.compress(Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
+		}
 	}
 
 	describe ("P09: Pack consecutive duplicates of list elements") {
@@ -102,6 +174,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should be a list of lists")
 			f should be(List(List('a, 'a, 'a, 'a), List('b), List('c, 'c), List('a, 'a), List('d), List('e, 'e, 'e, 'e)))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = Lists99.pack(Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
 		}
 	}
 
@@ -113,6 +193,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be tuples")
 			rle should be(List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
 		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val rle = Lists99.encode(Nil)
+
+			then ("it should be Nil")
+			rle should be(Nil)
+		}
 	}
 
 	describe ("P11: Modified run-length encoding.") {
@@ -123,6 +211,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			then ("it should be tuples")
 			rle should be(List((4,'a), 'b, (2,'c), (2,'a), 'd, (4,'e)))
 		}	
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val rle = Lists99.encodeModified(Nil)
+
+			then ("it should be Nil")
+			rle should be(Nil)
+		}
 	}
 
 	describe ("P12: Decode a run-length encoded list.") { 
@@ -132,6 +228,32 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should be the original list") 
 			dec should be(letters)
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil")
+			val dec = Lists99.decode(Nil)
+
+			then ("it should be Nil")
+			dec should be(Nil)
+		}
+	}
+
+	describe ("P13: Run-length encoding of a list (direct solution).") {
+		it ("should RLE a list without supporting methods") {
+			when ("RL encoding the list")
+			val rle = Lists99.encodeDirect(letters)
+
+			then ("it should be tuples")
+			rle should be(List((4,'a), (1,'b), (2,'c), (2,'a), (1,'d), (4,'e)))
+		}
+
+		it ("should yield Nil when given Nil") {
+			when ("given Nil")
+			val rle = Lists99.encodeDirect(Nil)
+
+			then ("it should be Nil")
+			rle should be(Nil)
 		}
 	}
 }
