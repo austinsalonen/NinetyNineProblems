@@ -93,4 +93,6 @@ object Lists99 {
 			rle(leading) :: encodeDirect(trailing)	
 		}
 	}
+
+	def duplicate(given: List[Any]) : List[Any] = given flatMap {itm => List(itm,itm)}
 }

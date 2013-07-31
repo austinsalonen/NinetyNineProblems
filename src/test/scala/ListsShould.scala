@@ -264,4 +264,22 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			rle should be(Nil)
 		}
 	}
+
+	describe ("P14: Duplicate the elements of a list.") {
+		it ("should duplicate a given list") {
+			when ("duplicating a list") 
+			val dup = Lists99.duplicate(List('a, 'b, 'c, 'c, 'd))
+
+			then ("it should be doubled up")
+			dup should be(List('a, 'a, 'b, 'b, 'c, 'c, 'c, 'c, 'd, 'd))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val dup = Lists99.duplicate(Nil)
+
+			then ("it should be Nil")
+			dup should be(Nil)
+		}
+	}
 }
