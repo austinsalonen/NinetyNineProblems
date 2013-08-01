@@ -427,6 +427,18 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 			then ("it should have n items")
 			f.length should be(3)
+			f.toSet.count(x => true) should be (3)
+		}
+	}
+
+	describe ("P24: Lotto: Draw N different random numbers from the set 1..M.") {
+		it ("should draw n numbers") {
+			when ("drawing numbers")
+			val f = lotto(6,49)
+
+			then ("there should be n unique numbers")
+			f.length should be(6)
+			f.toSet.count(x => true) should be(6)
 		}
 	}
 }
