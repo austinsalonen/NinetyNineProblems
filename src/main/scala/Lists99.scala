@@ -127,7 +127,7 @@ object Lists99 {
 
 	def range(a: Int, b: Int) : List[Int] = (a to b) toList
 
-	def randomSelect(count: Int, given: List[Any]) : List[Any] = Random.shuffle(given) take count
+	def randomSelect(count: Int, given: List[Any]) : List[Any] = randomPermute(given) take count
 
 	def lotto(count: Int, largest: Int) : List[Int] = {
 		def _toInt(v: Any) : Int = v match {
@@ -136,4 +136,6 @@ object Lists99 {
 		}
 		randomSelect(count, range(1, largest)) map _toInt
 	}
+
+	def randomPermute(given: List[Any]) : List[Any] = Random.shuffle(given)
 }

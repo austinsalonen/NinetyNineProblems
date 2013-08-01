@@ -441,4 +441,15 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f.toSet.count(x => true) should be(6)
 		}
 	}
+
+	describe ("P25: generate a random permutation of the list") {
+		it ("should permute the list") {
+			when ("permuting the list")
+			val given = List('a, 'b, 'c, 'd, 'e, 'f) 
+			val f = randomPermute(given)
+
+			then ("the same elements should be returned, possibly shuffled")
+			f.toSet should be(given.toSet)
+		}
+	}
 }
