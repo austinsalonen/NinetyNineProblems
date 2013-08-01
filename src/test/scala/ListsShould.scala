@@ -337,4 +337,22 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			dup should be(Tuple2(Nil,Nil))
 		}
 	}
+
+	describe ("P18: Extract a slice from a list") {
+		it ("should slice the list") {
+			when ("slicing a list") 
+			val f = slice(3, 7, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+
+			then ("it should be expected")
+			f should be(List('d, 'e, 'f, 'g))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val dup = slice(4, 6, Nil)
+
+			then ("it should be Nil")
+			dup should be(Nil)
+		}
+	}
 }

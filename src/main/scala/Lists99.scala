@@ -105,4 +105,6 @@ object Lists99 {
 		Tuple2(given take firstLength, given drop firstLength)
 	}
 
+	def slice(from: Int, to: Int, given: List[Any]) : List[Any] = given drop from take (to - from)
+
 }
