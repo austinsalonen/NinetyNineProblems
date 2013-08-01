@@ -102,7 +102,7 @@ object Lists99 {
 	}
 
 	def split(firstLength: Int, given: List[Any]) : Tuple2[List[Any], List[Any]] = {
-		Tuple2(given take firstLength, given drop firstLength)
+		(given take firstLength, given drop firstLength)
 	}
 
 	def slice(from: Int, to: Int, given: List[Any]) : List[Any] = given drop from take (to - from)
@@ -115,4 +115,6 @@ object Lists99 {
 			case n => dropAndTake(given.length + n)
 		}
 	}
+
+	def removeAt(pos: Int, given: List[Any]) : Tuple2[List[Any], Any] = ((given take pos) ::: (given drop pos+1), nth(pos, given))
 }
