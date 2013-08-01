@@ -117,4 +117,9 @@ object Lists99 {
 	}
 
 	def removeAt(pos: Int, given: List[Any]) : Tuple2[List[Any], Any] = ((given take pos) ::: (given drop pos+1), nth(pos, given))
+
+	def insertAt(itm: Any, pos: Int, given: List[Any]) : List[Any] = {
+		val (before, after) = given splitAt pos
+		before ::: List(itm) ::: after
+	}
 }

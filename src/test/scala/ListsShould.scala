@@ -399,4 +399,14 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(Tuple2(Nil,Nil))
 		}
 	}
+
+	describe ("P21: Insert an element at a given position into a list") {
+		it ("should insert an item") {
+			when ("inserting an item") 
+			val f = insertAt('new, 1, List('a, 'b, 'c, 'd))
+
+			then ("there should be a new list")
+			f should be(List('a, 'new, 'b, 'c, 'd))
+		}
+	}
 }
