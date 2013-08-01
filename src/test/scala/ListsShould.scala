@@ -409,4 +409,24 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			f should be(List('a, 'new, 'b, 'c, 'd))
 		}
 	}
+
+	describe ("P22: Create a list containing all integers within a given range") {
+		it ("should yield a range") {
+			when ("creating a range")
+			val f = range(4,9)
+
+			then ("it should yield an inclusive range") 
+			f should be(List(4,5,6,7,8,9))
+		}
+	}
+
+	describe ("P23: Extract a given number of randomly selected elements from a list.") {
+		it ("should extract n values") {
+			when ("values are extracted")
+			val f = randomSelect(3, List('a, 'b, 'c, 'd, 'f, 'g, 'h))
+
+			then ("it should have n items")
+			f.length should be(3)
+		}
+	}
 }

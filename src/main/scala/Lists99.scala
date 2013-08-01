@@ -1,5 +1,7 @@
 package com.austinsalonen
 
+import scala.util.Random
+
 object Lists99 {
 	def last(given: List[Any]): Any = given match {
 		case Nil => Nil
@@ -122,4 +124,8 @@ object Lists99 {
 		val (before, after) = given splitAt pos
 		before ::: List(itm) ::: after
 	}
+
+	def range(a: Int, b: Int) : List[Int] = (a to b) toList
+
+	def randomSelect(count: Int, given: List[Any]) : List[Any] = Random.shuffle(given) take count
 }
