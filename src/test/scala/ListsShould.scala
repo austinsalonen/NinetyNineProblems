@@ -319,4 +319,22 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 			dup should be(Nil)
 		}
 	}
+
+	describe ("P17: Split a list into two parts.") {
+		it ("should split a list") {
+			when ("splitting a list") 
+			val parts = split(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+
+			then ("there should be two lists")
+			parts should be((List('a, 'b, 'c),List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k)))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val dup = split(4, Nil)
+
+			then ("it should be Nil")
+			dup should be(Tuple2(Nil,Nil))
+		}
+	}
 }

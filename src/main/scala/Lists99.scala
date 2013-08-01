@@ -20,7 +20,6 @@ object Lists99 {
 		}
 	}
 
-
 	def length(given: List[Any]): Int = {
 		def _length(acc: Int, lst: List[Any]): Int = lst match {
 			case h :: t => _length(acc + 1, t)
@@ -101,4 +100,9 @@ object Lists99 {
 	def drop(every: Int, given: List[Any]) : List[Any] = {
 		given zip given.indices filterNot { case(_, idx) => (idx + 1) % every == 0} map {case(a, _) => a}
 	}
+
+	def split(firstLength: Int, given: List[Any]) : Tuple2[List[Any], List[Any]] = {
+		Tuple2(given take firstLength, given drop firstLength)
+	}
+
 }
