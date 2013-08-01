@@ -107,4 +107,12 @@ object Lists99 {
 
 	def slice(from: Int, to: Int, given: List[Any]) : List[Any] = given drop from take (to - from)
 
+	def rotate(places: Int, given: List[Any]) : List[Any] = {
+		def dropAndTake(amt: Int): List[Any] = (given drop amt) ::: (given take amt)
+
+		places match {
+			case p if p > 0 => dropAndTake(p)
+			case n => dropAndTake(given.length + n)
+		}
+	}
 }

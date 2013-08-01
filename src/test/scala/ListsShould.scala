@@ -313,10 +313,10 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 		it ("should handle Nil") {
 			when ("given Nil") 
-			val dup = drop(4, Nil)
+			val f = drop(4, Nil)
 
 			then ("it should be Nil")
-			dup should be(Nil)
+			f should be(Nil)
 		}
 	}
 
@@ -331,10 +331,10 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 		it ("should handle Nil") {
 			when ("given Nil") 
-			val dup = split(4, Nil)
+			val f = split(4, Nil)
 
 			then ("it should be Nil")
-			dup should be(Tuple2(Nil,Nil))
+			f should be(Tuple2(Nil,Nil))
 		}
 	}
 
@@ -349,10 +349,36 @@ class ListsShould extends FunSpec with ShouldMatchers with GivenWhenThen {
 
 		it ("should handle Nil") {
 			when ("given Nil") 
-			val dup = slice(4, 6, Nil)
+			val f = slice(4, 6, Nil)
 
 			then ("it should be Nil")
-			dup should be(Nil)
+			f should be(Nil)
+		}
+	}
+
+	describe ("P19: Rotate a list N places to the left") {
+		it ("should rotate left") {
+			when ("rotating left")
+			var f = rotate(3, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+
+			then ("it should be rotated")
+			f should be (List('d, 'e, 'f, 'g, 'h, 'i, 'j, 'k, 'a, 'b, 'c))
+		}
+
+		it ("should rotate right") {
+			when ("rotating left")
+			var f = rotate(-2, List('a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i, 'j, 'k))
+
+			then ("it should be rotated")
+			f should be (List('j, 'k, 'a, 'b, 'c, 'd, 'e, 'f, 'g, 'h, 'i))
+		}
+
+		it ("should handle Nil") {
+			when ("given Nil") 
+			val f = rotate(4, Nil)
+
+			then ("it should be Nil")
+			f should be(Nil)
 		}
 	}
 }
